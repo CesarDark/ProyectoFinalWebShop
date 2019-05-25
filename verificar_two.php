@@ -20,6 +20,8 @@ if (!empty($_SESSION['CARRITO'])){
         //$ultimo_id = $connect->lastInsertId($sql);
         //echo $ultimo_id;
         $completado = $sql->rowCount();
+        // session_destroy();
+        // unset($_SESSION['CARRITO']);
    }
 }
     $mensajePaypal = "Pago Completado";
@@ -60,6 +62,7 @@ if (!empty($_SESSION['CARRITO'])){
                
                 $listarProductos = $sql->fetchALL(PDO::FETCH_ASSOC);
                 print_r($listarProductos);
+
             }
         ?>
 
@@ -79,7 +82,9 @@ if (!empty($_SESSION['CARRITO'])){
     </p>
 </div>
 
-<?php include("templates/pie.php"); ?>
+
+<?php include("templates/pie.php"); 
+unset($_SESSION['CARRITO']);?>
 
 <!-- 
     AND ventas.clavetransaccion = :clavetransaccion"; 
