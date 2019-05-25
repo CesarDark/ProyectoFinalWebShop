@@ -1,3 +1,12 @@
+<?php
+	ob_start();
+	session_start();
+	$varsesion = $_SESSION['usuario'];
+	if ($varsesion == null || $varsesion = ''){
+		header ("Location: archivos_sesion/error.php");
+		die();
+	}
+?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 
@@ -15,7 +24,7 @@
 <body>
     <!-- Navegación -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="index.php">The Geek Store</a>
+        <a class="navbar-brand" href="principal.php">The Geek Store</a>
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -23,13 +32,21 @@
         <div id="my-nav" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php"> Inicio </a>
+                    <a class="nav-link" href="principal.php"> Inicio </a>
                 </li>
                 <li class="nav-item">
                     <!-- Carrito -->
                     <a class="nav-link " href="mostrarCarrito.php"> Carrito(<?php
                         echo (empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']);
                     ?>)</a>
+                </li>
+                <li class="nav-item">
+                    <!-- Usuario -->
+                    <a class="nav-link " href=""> <?php echo $_SESSION['usuario'];?></a>
+                </li>
+                <li class="nav-item">
+                    <!-- Usuario -->
+                    <a class="nav-link " href="../archivos_sesion/logout.php"> Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
