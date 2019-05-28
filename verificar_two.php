@@ -78,6 +78,7 @@
 </div>
 
 <?php include("templates/pie.php");
+
 // Vaciar carrito sin cerrar sesión.
 unset($_SESSION['CARRITO']);
 
