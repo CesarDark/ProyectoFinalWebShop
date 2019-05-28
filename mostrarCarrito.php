@@ -53,13 +53,41 @@
                     <form action="pagar.php" method="post">
                         <div class="alert alert-success">
                             <div class="form-group">
-                                <label for="my-input">Correo de contacto: </label>
-                                <input id="email" name="email" class="form-control" type="email" placeholder="Escribe tú correo" required>
+                                <label for="my-input">Nombre de Usuario: </label>
+                                <input id="usuario" name="usuario" value="<?php echo $_SESSION['usuario'];?>" disabled class="form-control" type="text" placeholder="Escribe tú nombre de usuario..." required>
                             </div>
+                            <div class="form-group">
+                                <label for="my-input">Correo de contacto: </label>
+                                <input id="email" name="email" class="form-control" type="email" placeholder="Escribe tú correo..." required>
+                            </div>
+
                             <small id="emailHelp" class="form-text text-muted">
-                                Tus Cómics serán enviados a tú correo.
+                                Los productos podrán ser descargados una vez que se procese el pago.
                             </small>
                         </div>
+
+                        <p>
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Método de Pago:
+                        </button>
+                        </p>
+                        <!-- Colapso -->
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Opciones:</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                                        <option selected>Selecciona...</option>
+                                        <option value="1">Tarjeta de Crédito</option>
+                                        <option value="2">Paypal</option>
+                                        <option value="3">Oxxo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Colapso -->
                         <button class="btn btn-primary btn-lg btn-block" name="btnAccion" type="submit" value="proceder">
                             Proceder a Pagar
                         </button>
