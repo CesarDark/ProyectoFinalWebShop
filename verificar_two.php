@@ -1,92 +1,84 @@
 <?php
-include("global/config.php");
-include("global/conexion.php");
-include("carrito.php");
-include("templates/cabecera.php");
+    include("global/config.php");
+    include("global/conexion.php");
+    include("carrito.php");
+    include("templates/cabecera.php");
 ?>
 
 <?php
-if (!empty($_SESSION['CARRITO'])){
-//if ($_POST) {
-    //$idVenta = $connect->lastInsertId();
+    $usuario = $_SESSION['usuario'];
     $SID = session_id();
-    foreach ($_SESSION['CARRITO'] as $indice => $producto) {
-        $query = "UPDATE ventas SET datosp = 'BBB', status = 'Completado' WHERE clavetransaccion =:clavetransaccion";
-        //print_r($idVenta);
-        $sql = $connect->prepare($query);
-        $sql->bindParam(":clavetransaccion", $SID);
-        $sql->execute();
 
-        //$ultimo_id = $connect->lastInsertId($sql);
-        //echo $ultimo_id;
-        $completado = $sql->rowCount();
-        // session_destroy();
-        // unset($_SESSION['CARRITO']);
-   }
-}
-    $mensajePaypal = "Pago Completado";
+    $query = "UPDATE ventas SET datosp = 'Sesion', status = 'Completado' WHERE claveTransaccion =:claveTransaccion";
+    $sql = $connect->prepare($query);
+    $sql->bindParam(":claveTransaccion", $SID);
+    $sql->execute();
+
+    $completado = $sql->rowCount();
+
+    $mensajePaypal = "Últimas Compras: ";
     echo $mensajePaypal;
     echo $completado;
-//}
 ?>
 
 <div class="jumbotron">
-    <h1 class="display-4">¡Listo!</h1>
+    <h1 class="display-4">¡Gracias <?php echo $_SESSION['usuario']; ?> por tu Compra!</h1>
     <hr class="my-4">
-    <p class="lead"><?php echo $mensajePaypal; ?></p>
+    <small id="emailHelp" class="form-text text-muted">
+        Ya puedes descargar tus Cómics.
+    </small>
     <p>
-        <?php
-            if ($completado >= 1){  // >=1 | == 1
-                foreach ($_SESSION['CARRITO'] as $indice => $producto) { 
-                // $query = "SELECT * FROM detalleVenta, productos 
-                //             WHERE detalleVenta.idProducto = productos.idProducto 
-                //             AND detalleVenta.idVenta = 68;";
-                
-                $query = "SELECT max(detalleVenta.idVenta), productos.nombre, productos.imagen 
-                            FROM detalleVenta, productos 
-                            WHERE detalleVenta.idProducto = productos.idProducto 
-                            GROUP BY detalleVenta.idVenta, productos.nombre, productos.imagen
-                            ORDER BY detalleVenta.idVenta DESC LIMIT 2";
+    <p class="lead"><?php echo $mensajePaypal; ?></p>
 
-                $sql = $connect->prepare($query);
-                //$sql->bindParam(":ID", $SID); // $claveVenta
-                //$sql->bindParam(":clavetransaccion", $SID);
-                $sql->execute();
+    <!-- Mostrar últimos comprados -->
+    <?php
+        if ($completado >= 1) {  // >=1 | == 1
 
-                //$idVenta = $connect->lastInsertId($sql);
-                //echo $idVenta;
-                //$claveVenta = openssl_decrypt($producto['ID'], COD, KEY);
-                //print_r($claveVenta);              
-                }
-                echo "hola <br>"; 
-               
-                $listarProductos = $sql->fetchALL(PDO::FETCH_ASSOC);
-                print_r($listarProductos);
+            $query = " SELECT detalleVenta.usuario, ventas.clavetransaccion, detalleVenta.idVenta, ventas.total
+                        FROM (detalleVenta INNER JOIN ventas ON detalleVenta.idVenta=ventas.idVenta)
+                        WHERE ventas.usuarioNombre = :usuarioNombre
+                        GROUP BY detalleVenta.usuario, ventas.clavetransaccion, detalleVenta.idVenta, ventas.idVenta";
 
-            }
-        ?>
+            $sql = $connect->prepare($query);
+            $sql->bindParam(":usuarioNombre", $usuario);
+            $sql->execute();
 
-        <div class="row">
-            <?php foreach($listarProductos as $producto) {?>
-                <div class="col-2">
-                    <div class="card">
-                        <img class="card-img-top" src="<?php echo $producto['imagen'];?>">
+            $listarProductos = $sql->fetchALL(PDO::FETCH_ASSOC);
+            //print_r($listarProductos);
+        }
+    ?>
+
+    <!-- Desplegar Transacción producto -->
+    <div class="row">
+        <?php foreach ($listarProductos as $producto) { ?>
+            <div class="col-4">
+                <div class="card">
+                    <!-- <img class="card-img-top" src="Images/<?php echo $producto['imagen']; ?>"> -->
                         <div class="card-body">
-                            <p class="card-text"><?php echo $producto['nombre'];?></p>
+                            <strong>Transacción: </strong>
+                            <p class="card-text"><?php echo $producto['clavetransaccion']; ?></p>
+                            <strong>Precio: </strong>
+                            <p class="card-text"><?php echo $producto['total']; ?></p>
                             <button class="btn btn-success" type="button">Descargar</button>
                         </div>
-                    </div>
                 </div>
-            <?php }?>
-        </div>
+            </div>
+        <?php } ?>
+    </div>
+    <!-- Desplegar Transacción producto -->
+    <!-- Mostrar últimos comprados -->
+
+    <div class="form-group">
+        <form action="../archivos_sesion/logout.php"> <br><br>
+            <button class="btn btn-danger btn-lg center-block" name="" value="Ver" type="submit">Salir</button>
+        </form>
+    </div>
+
     </p>
 </div>
 
+<?php include("templates/pie.php");
+// Vaciar carrito sin cerrar sesión.
+unset($_SESSION['CARRITO']);
 
-<?php include("templates/pie.php"); 
-unset($_SESSION['CARRITO']);?>
-
-<!-- 
-    AND ventas.clavetransaccion = :clavetransaccion"; 
-    AND detalleVenta.idVenta = 67"; //ID
--->
+?>
