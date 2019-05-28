@@ -83,7 +83,7 @@
                         if ($producto['ID'] == $ID){
                             //Función unset() para eliminar registros de la variable de sesión.
                             unset($_SESSION['CARRITO'][$indice]);
-                            echo "<script> alert('Elemento borrado...');</script>";
+                            // echo "<script> alert('Elemento borrado...');</script>";
                         }
                     }
                 } else {
