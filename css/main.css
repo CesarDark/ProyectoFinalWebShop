@@ -1,11 +1,19 @@
+
+.content {
+	margin: auto;
+	width: 60%;
+	border: 3px solid #73AD21;
+	padding: 10px;
+}
+  
 .contact-us {
 	padding: 50px;
     background-color: #ffffff;
     box-shadow: -2px 40px 34px -24px rgba(0, 0, 0, 0.2);
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-    border: solid 7px #4c9cef;
-    border-left-color: #f7639a;
-    border-right-color: #f7639a;
+    border: solid 7px #1b6bc2;
+    border-left-color: #1b6bc2;
+    border-right-color: #1b6bc2;
 }
 
 .contact-us-detail {
@@ -43,19 +51,9 @@
 	    -ms-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
 		 -o-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
 			box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
-	-webkit-transition:all 150ms ease-in-out 0s;
-	   -moz-transition:all 150ms ease-in-out 0s;
-	    -ms-transition:all 150ms ease-in-out 0s;
-	     -o-transition:all 150ms ease-in-out 0s;
-		    transition:all 150ms ease-in-out 0s;
 }
 .form-control:focus {
 	border-color: #171717;
-	-webkit-box-shadow: none;
-	   -moz-box-shadow: none;
-	    -ms-box-shadow: none;
-		 -o-box-shadow: none;
-			box-shadow: none;
 }
 
 .form-control:focus {
@@ -87,45 +85,4 @@
 	font-weight: 700;
 	outline: none;
 	position: relative;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
-}
-
-.button:after {
-	content: '';
-	position: absolute;
-	z-index: -1;
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
-}
-
-.button-style {
-	border: 3px solid #fff;
-	color: #fff;
-}
-
-.button-style:hover,
-.button-style:active,
-.button-style:focus {
-	color: #ffffff;
-	background: #4c9cef;
-}
-
-.button-style-color-2:hover,
-.button-style-color-2:active,
-.button-style-color-2:focus {
-	color: #ffffff;
-	background: #f7639a;
-}
-
-.button-style-dark {
-	border: 3px solid #000000;
-	color: #000000;
-}
-
-.pattern-bg {
-	background: url(https://s23.postimg.org/klq72xovv/pattern_bg.png);
-	background-repeat: repeat;
 }
