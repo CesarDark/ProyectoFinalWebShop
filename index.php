@@ -1,3 +1,8 @@
+<?php
+    include("global/config.php");
+    include("global/conexion.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 
@@ -9,17 +14,15 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link rel="stylesheet" href="css/menu.css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <title>The Geek Store</title>
 </head>
 
-<body>
-
+<body class="hm-gradient">
     <!-- Navegación -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <img src="../Images/3_Spiderman_cara_editado_1200x1200.png" width="30" height="30" alt="">
         <a class="navbar-brand" href="index.php">The Geek Store</a>
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,99 +39,125 @@
                 <li class="nav-item">
                     <a class="nav-link " href="contacto.php"> Contacto</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="inicio.php"> Inicia Sesión / Registrate</a>
+                </li>
             </ul>
         </div>
-    </nav>
-</body>
+    </nav> 
+    <!-- Navegación -->
 
-<body class="hm-gradient">
-    <body class="hm-gradient">
-        <main>
-            <!--MDB Forms-->
-            <div class="container mt-4">
-            <div class="text-center darken-grey-text mb-4">
-            <br><br><br>
-            <h4 class="heading"><strong>Únete </strong>| Somos #1 en Cómics <span></span></h4>
+    <!-- Carrusel -->
+    <div class="container">
+        <div class="col-md-12">
+            <div id="carousel-1" class="carousel slide" data-ride="carousel">
+                <!-- Indicadores -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-1" data-slide-to="1"></li>
+                    <li data-target="#carousel-1" data-slide-to="2"></li>
+                </ol>
+                <!-- Contenedor de los slide -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="/Images/Banner1.png" class="img-responsive" alt="">
+                        <div class="carousel-caption hidden-xs hidden-sm">
+                            <h3>Slide #1</h3>
+                            <p>slide</p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="/Images/Banner2.jpg" class="img-responsive" alt="">
+                        <div class="carousel-caption hidden-xs hidden-sm">
+                            <h3>Slide #2</h3>
+                            <p>slide</p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="/Images/slide1.1.jpg" class="img-responsive" alt="">
+                        <div class="carousel-caption hidden-xs hidden-sm">
+                            <h3>Slide #3</h3>
+                            <p>slide</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controles -->
+                <a href="#carousel-1" class="left carousel-control" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+                <a href="#carousel-1" class="right carousel-control" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Siguiente</span>
+                </a>
             </div>
-                <!-- Grid row -->
-                <div class="row">
-                    <!-- Grid column -->
-                    <div class="col-md-6 mb-4">
-                        <div class="card bg-light text-dark">
-                            <div class="card-body">
-                                <form name="login" action="archivos_sesion/login.php" method="post">
-                                    <h3 class="text-center default-text py-3"><i class="fa fa-lock"></i> Ingresa:</h3>
-                                    <!--Body-->
-                                    <div class="md-form">
-                                        <i class="fa fa-envelope prefix grey-text"></i>
-                                        <input type="text" name="usuario" id="defaultForm-email" class="form-control">
-                                        <label for="defaultForm-email">Tú Usuario:</label>
-                                    </div>
-                                    <div class="md-form">
-                                        <i class="fa fa-lock prefix grey-text"></i>
-                                        <input type="password" name="password" id="defaultForm-pass" class="form-control">
-                                        <label for="defaultForm-pass">Tú contraseña:</label>
-                                    </div>
-                                    <div class="text-center">
-                                        <button class="btn btn-default waves-effect waves-light">Ingresar</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    
-                
-                    <!-- Grid column -->
-                    <!-- Grid column -->
-                    <div class="col-md-6 mb-4">
-                        <div class="card bg-light text-dark">
-                            <div class="card-body">
-                                <!-- Form register -->
-                                <form name="alta" action="archivos_sesion/alta.php" method="post">
-                                    <h2 class="text-center font-up font-bold deep-orange-text py-4">Registrate:</h2>
-                                    <div class="md-form">
-                                        <i class="fa fa-user prefix grey-text"></i>
-                                        <input type="text" name="nombre" id="orangeForm-name3" class="form-control">
-                                        <label for="orangeForm-name3">Tú Nombre:</label>
-                                    </div>
-                                    <div class="md-form">
-                                        <i class="fa fa-user prefix grey-text"></i>
-                                        <input type="text" name="apaterno" id="orangeForm-name3" class="form-control">
-                                        <label for="orangeForm-name3">Tú Apellido:</label>
-                                    </div>
-                                    <div class="md-form">
-                                        <i class="fa fa-user prefix grey-text"></i>
-                                        <input type="text" name="usuario" id="orangeForm-name3" class="form-control">
-                                        <label for="orangeForm-name3">Tú Usuario:</label>
-                                    </div>
-                                    <div class="md-form">
-                                        <i class="fa fa-envelope prefix grey-text"></i>
-                                        <input type="text" name="email" id="orangeForm-email3" class="form-control">
-                                        <label for="orangeForm-email3">Tú correo:</label>
-                                    </div>
-                                    <div class="md-form">
-                                        <i class="fa fa-lock prefix grey-text"></i>
-                                        <input type="password" name="password" id="orangeForm-pass3" class="form-control">
-                                        <label for="orangeForm-pass3">Tú Contraseña:</label>
-                                    </div>
-                                    <div class="text-center">
-                                        <button class="btn btn-deep-orange">Registrar<i class="fa fa-angle-double-right pl-2" aria-hidden="true"></i></button>
-                                    </div>
-                                </form>
-                                <!-- Form register -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Grid column -->
-
-        </main>
-
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.min.js"></script>
-        <div class="col-12 text-center">
-            &copy; Cesar Rebollar 2019
         </div>
+    </div> <br><br>
+    <!-- Carrusel -->
 
-    </body>
+    <!-- Columnas para los elementos -->
+    <div class="container"><br>  
+        <div class="row">
+        <?php
+            $query = "SELECT * FROM productos ORDER BY nombre DESC LIMIT 8;";
+            $sql = $connect->prepare($query);
+            $sql->execute();
+            $listarProductos = $sql->fetchALL(PDO::FETCH_ASSOC);
+        ?>
+        <!-- Producto -->
+        <?php foreach ($listarProductos as $producto){ ?>
+            <div class="col-3">
+            <div class="card">
+                <!-- Imagen height="317px"-->
+                <img title="<?php echo $producto['nombre']; ?>" 
+                    alt="<?php echo $producto['nombre']; ?>" 
+                    class="card-img-top" 
+                    src="Images/<?php echo $producto['imagen']; ?>" 
+                    data-toggle="popover" data-trigger="hover" 
+                    data-content="<?php echo $producto['descripcion']; ?>"
+                >
+                <!-- Cuerpo -->
+                <div class="card-body">
+                <span><?php echo $producto['nombre']; ?></span>
+                <h5 class="card-title">$<?php echo $producto['precio']; ?></h5>
+                <p class="card-text"><?php echo $producto['descripcion']; ?></p>
+                <!-- Botón -->
+                <form action="" method="post">
+                    <!-- AES -->
+                    <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($producto['idproducto'], COD, KEY); ?>">
+                    <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($producto['nombre'], COD, KEY); ?>">
+                    <input type="hidden" name="precio" id="precio" value="<?php echo openssl_encrypt($producto['precio'], COD, KEY); ?>">
+                    <input type="hidden" name="cantidad" id="cantidad" value="<?php echo openssl_encrypt(1, COD, KEY); ?>">
 
+                    <!-- <button class="btn btn-primary" name="btnAccion" value="Agregar" type="submit">Agregar al carrito</button> -->
+                </form>
+                </div>
+            </div>
+            </div>
+        <?php } ?>
+        <!-- Producto -->
+    </div>
+</div>
+
+<div class="form-group">
+    <form action="inicio.php"> <br><br>
+        <button class="btn btn-success btn-lg center-block" name="" value="Ver" type="submit">Ver más productos</button>
+    </form>
+</div>
+<div class="text-center"><br><br>
+    <strong>&copy; Cesar Rebollar 2019</strong>
+</div> 
+
+<script>
+  $(function() {
+    $('[data-toggle="popover"]').popover()
+  });
+</script>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</body>
 </html>
