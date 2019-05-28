@@ -1,7 +1,7 @@
 <?php
-	ob_start();
-	session_start();
-	$varsesion = $_SESSION['usuario'];
+	// ob_start();
+	// session_start();
+    $varsesion = $_SESSION['usuario'];
 	if ($varsesion == null || $varsesion = ''){
 		header ("Location: archivos_sesion/error.php");
 		die();
@@ -24,6 +24,7 @@
 <body>
     <!-- Navegación -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <img src="../Images/3_Spiderman_cara_editado_1200x1200.png" width="30" height="30" alt="">   
         <a class="navbar-brand" href="principal.php">The Geek Store</a>
         <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -51,7 +52,7 @@
             </ul>
         </div>
     </nav>
-    <br><br>
+    <br><br><br>
 
     <!-- Elementos index.php-->
     <div class="container"><br>
